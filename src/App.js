@@ -1,8 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import firebase from "./config";
 
 function App() {
+
+    useEffect(() => {
+    firebase.firestore().collection('Menu').get()
+      .then(item => item.forEach(element => {
+        console.log(element.data())
+      }))
+    })
+
   return (
     <div className="App">
       <header className="App-header">
