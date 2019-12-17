@@ -2,7 +2,7 @@ import React from 'react';
 function Input(props) {
     return(
         <input
-        class={props.class}
+        className={props.className}
         placeholder={props.placeholder}
         type={props.type}
         value={props.value}

@@ -3,10 +3,9 @@ function Button(props) {
     return(
       <button
       id={props.id}
-      class={props.class}
-      onclick={props.onClick}
-      >
-      {props.title}
+      className={props.className}
+      onClick={props.onClick}
+      >{props.title}
       </button>
     )
 }
