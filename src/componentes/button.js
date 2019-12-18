@@ -4,7 +4,7 @@ function Button(props) {
       <button
       id={props.id}
       className={props.className}
-      onClick={props.onClick}
+      onClick={props.handleClick}
       >{props.title}
       </button>
     )
