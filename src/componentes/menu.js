@@ -16,10 +16,14 @@ function Menu (props){
 const styles = StyleSheet.create({
     btn: {
       height: 80,
-      width: 100,
-      borderBottom: 'double',
-      background: '#FFD700',
+      width: 108,
+      borderBottom: 'solid',
+      background: '#EED5D2',
       margin: 10,
+    //   outline:'none',
+      backgroundAttachment: 'fixed',
+    //   whiteSpace: 'nowrap',
+      borderRadius: 16
     },
 })
 export default Menu
