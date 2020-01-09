@@ -1,6 +1,4 @@
 import React from 'react';
-import './App.css';
-
 import Restaurant from "./pages/Restaurant";
 import {
   BrowserRouter as Router,

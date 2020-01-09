@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
       height: 80,
       width: 108,
       borderBottom: 'solid',
-      background: '#EED5D2',
+      background: '#FFDAB9',
       margin: 10,
     //   outline:'none',
       backgroundAttachment: 'fixed',
