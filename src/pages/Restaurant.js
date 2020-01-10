@@ -38,8 +38,11 @@ function Restaurant () {
 
   function deletOrder (item) {
     const indexItem = (order.indexOf(item));
-    order.splice(indexItem, 1);
-    setOrder([...order]);
+    order[indexItem].count--;
+    if(order[indexItem].count===0){
+      order.splice(indexItem, 1);
+    }
+    setOrder([...order]) 
   }
 
   const total = order.reduce((accumulator, item) => accumulator + item.Price * item.count, 0)
@@ -50,6 +53,7 @@ function Restaurant () {
       table,
       order,
       total,
+      status: 'Preparação',
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     }
     firebase.firestore().collection('Orders').add(orders)
@@ -68,10 +72,11 @@ function Restaurant () {
     }
   }
 
+  
   const addOptionsExtras = () => {
-    const updatedPrice = 12;
-    const updatedItem = {...modal.item, Name: `${modal.item.Name}+${extras}Carne:${options}`, Price: updatedPrice}
+    const updatedItem = {...modal.item, Name: `${modal.item.Name}+${extras} Carne:${options}`}
     addOrder(updatedItem);
+    setModal({status: false})
   }
  
   
@@ -105,7 +110,7 @@ function Restaurant () {
 
   {/* inicio pedido */}
         {modal.status ? (
-          <div>
+          <div className = {css(styles.options)}>
             <h3>Extras</h3>
             {modal.item.Extra.map(elem => (
               <div>
@@ -120,7 +125,7 @@ function Restaurant () {
               <label>{elem}</label>
               </div>
             ))}
-            <Button handleClick = {addOptionsExtras} title="Adicionar"></Button>
+            <Button className= {css(styles.send)} handleClick = {addOptionsExtras} title="Adicionar"></Button>
           </div>
         ) : false}
       <section className= {css(styles.orders)}>
@@ -130,7 +135,7 @@ function Restaurant () {
             {item.Price.toLocaleString("pt-BR", {style: "currency", currency: "BRL"})} 
             &emsp;Quant:&nbsp;{item.count}
             &emsp;
-            <Button handleClick = {deletOrder} title = "🗑" ></Button> 
+            <Button handleClick = {() => deletOrder(item)}  title = "🗑" ></Button> 
             <br/>
           </span>
         )}
@@ -164,7 +169,7 @@ const styles = StyleSheet.create({
   orders: {
     position: 'absolute',
     top: 138,
-    left: 600,
+    left: 530,
   },
   send: {
     height: 80,
@@ -175,6 +180,16 @@ const styles = StyleSheet.create({
       borderRadius: 16,
       fontWeight: 'bold',
       fontSize: 15,
+  },
+  options: {
+    position: 'absolute',
+    top: 350,
+    left: 550,
+    // display: 'flex',
+    // flexWrap: 'wrap',
+    // justifyContent: 'space-evenly',
+    // height: '50%',
+    // width: '50%',
   }
 })
 

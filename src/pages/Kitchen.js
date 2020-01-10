@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import firebase from "../config";
-import { StyleSheet, css } from 'aphrodite';
+//import { StyleSheet, css } from 'aphrodite';
 import Button from '../componentes/button';
+import Card from '../componentes/card';
 // import Input from "../componentes/input"; 
 
 function Kitchen () {
@@ -18,23 +19,39 @@ function Kitchen () {
       }, [])
 
 
+    const sendDelivery = (item) => {
+        firebase.firestore().collection('Orders').doc(item.id).update({status: 'Entregar'})
+            .then(() => {
+                console.log('foi')
+            })
+    }
+
+    const sendFinalized = (item) => {
+        firebase.firestore().collection('Orders').doc(item.id).update({status: 'Pronto'})
+            .then(() => {
+                console.log('foi2')
+            })
+    }
+
+
     return(
         <>
         <h1>Cozinha</h1>
         <section>
             <h2>Em preparação</h2>
             {data.map(item =>
-                <table className= {css(styles.orders)}> <tr>Cliente:&emsp;{item.name}</tr>
-                    <tr>Mesa:&emsp;{item.table}</tr>
-                    <tr>Pedido:</tr>
-                    <tr></tr>
-                    <Button title= 'Pronto'></Button>
-                {/* <tr>Horário:{item.timestamp}</tr> */}
-                </table>
+                <Card
+                    table={item.table}
+                    name={item.name}
+                    order={item.order.map(i => <tr>{i.Name}&emsp;Quant.:{i.count}</tr>)} 
+                    title={'Pronto'}
+                    handleClick = {() => sendDelivery(item)}>
+                </Card>
             )}
         </section>
         <section>
             <h2>Para entrega</h2>
+            <Button handleClick = {() => sendFinalized()} title= 'Entregue'></Button>
         </section>
         <section>
             <h2>Finalizados</h2>
@@ -43,13 +60,11 @@ function Kitchen () {
     )
 }
 
-const styles = StyleSheet.create({
-    orders: {
-        padding: 10,
-        
-        // float: 'left'
-    }
+// const styles = StyleSheet.create({
+//     orders: {
+//         padding: 10,
+//     }
     
-})
+// })
 
 export default Kitchen
