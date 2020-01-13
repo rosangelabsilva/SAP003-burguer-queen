@@ -9,7 +9,7 @@ const Logo = () => {
 
 const styles = StyleSheet.create({
     img: {
-        position: 'fixed',
+        position: 'absolute',
         display: 'flex',
         width: '15%',
         top: 1

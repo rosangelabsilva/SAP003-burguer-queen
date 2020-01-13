@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import firebase from "../config";
 import { StyleSheet, css } from 'aphrodite';
 import Card from '../componentes/card';
+const hmh = require('hmh');
 
 function Kitchen () {
     const [data, setData] = useState([]);
@@ -17,13 +18,15 @@ function Kitchen () {
                     id: doc.id,
                     ...doc.data()
                 }))
-            console.log("FROM FIREBASE", itensMenu)
             setData(itensMenu) 
             })
     }
 
     const sendDelivery = (item) => {
-        firebase.firestore().collection('Orders').doc(item.id).update({status: 'Entregar'})
+        firebase.firestore().collection('Orders').doc(item.id).update({
+            status: 'Entregar',
+            timestampDelivered: new Date().getTime()
+        })
             .then(() => {
                 getOrders() 
             })
@@ -36,7 +39,7 @@ function Kitchen () {
             })
     }
 
-    const statusP = (status) => status.status==='Preparação';
+    const statusPrepare = (status) => status.status==='Preparação';
     
     const statusDelivery = (status) => status.status==='Entregar';
 
@@ -46,22 +49,21 @@ function Kitchen () {
         <>
         <div className= {css(styles.page)}>        
         <h1>Cozinha</h1>
-        <section>
-            <h2>Em preparação</h2>
-            {data.filter(statusP).map(item =>
+        <h2>Em preparação</h2>
+        <section className= {css(styles.orders)}>
+            {data.filter(statusPrepare).map(item =>
                 <Card
                     table={item.table}
                     name={item.name}
                     order={item.order.map(i => <tr>{i.Name}&emsp;Quant.:{i.count}</tr>)} 
                     title={'Pronto'}
                     status={item.status}
-                    timestamp={item.timestamp}
                     handleClick = {() => sendDelivery(item)}>
                 </Card>
             )}
         </section>
-        <section>
-            <h2>Para entrega</h2>
+        <h2>Para entrega</h2>
+        <section className= {css(styles.orders)}>
             {data.filter(statusDelivery).map(item =>
                 <Card
                     table={item.table}
@@ -73,16 +75,21 @@ function Kitchen () {
                 </Card>
             )}
         </section>
-        <section>
-            <h2>Finalizados</h2>
+        <h2>Finalizados</h2>
+        <section className= {css(styles.orders)}>
             {data.filter(statusFinal).map(item =>
+                {const send = `${new Date (item.timestamp).getHours()}h ${new Date (item.timestamp).getMinutes()}m`;
+                const entrega = `${new Date (item.timestampDelivered).getHours()}h ${new Date (item.timestampDelivered).getMinutes()}m`
+                const diff = (hmh.diff(`${send}`,`${entrega}`).toString());
+                return(
                 <Card
                     table={item.table}
                     name={item.name}
                     status={item.status}
-                    order={item.order.map(i => <tr>{i.Name}&emsp;Quant.:{i.count}</tr>)}>
+                    order={item.order.map(i => <tr>{i.Name}&emsp;Quant.:{i.count}</tr>)}
+                    time={diff}>
                 </Card>
-            )}
+            )})}
         </section>
         </div>
         </>
@@ -93,8 +100,11 @@ const styles = StyleSheet.create({
     page: {
         position:'absolute',
         top: '20%'
-    }
-    
+    },
+    orders:{
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
 })
 
 export default Kitchen

@@ -8,16 +8,14 @@ function Card(props){
         <div className= {css(styles.card)}>
             <span className= {css(styles.name)}>Cliente:{props.name}</span><br/>
             <span className= {css(styles.table)}>Mesa:{props.table}</span><br/>
-            <span>Pedido:<br/>{props.order}</span><br/>
-            {props.timestamp != null ? <span>Segundos: {props.timestamp.seconds}</span> : <br/> }
+            <div className= {css(styles.order)}>Pedido:<br/>{props.order}</div><br/>
+            {props.status==='Pronto' ? <span>Tempo de Preparo:{props.time}</span>:<br/>}
             {props.status!=='Pronto' ? <Button handleClick={props.handleClick} title={props.title}
             className= {css(styles.btn)}></Button> : <br/>}
         </div>        
     )
    
 }
-
-
 
 const styles = StyleSheet.create({
     name:{
@@ -28,10 +26,8 @@ const styles = StyleSheet.create({
         width: 108,
         borderBottom: 'solid',
         background: '#E9967A',
-        margin: 10,
         backgroundAttachment: 'fixed',
         borderRadius: 16,
-        alignContent: 'center',
         color: 'black',
         fontWeight: 'bold',
         fontSize: 20,
@@ -39,15 +35,18 @@ const styles = StyleSheet.create({
     card:{
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'space-evenly',
+        justifyContent: 'center',
         margin: 20,
         height: 400,
         width: 200,
         float: 'left',
         backgroundColor: '#FFDAB9',
-        // border: 'solid',
         borderRadius: 15,
         fontSize: 18,
+    },
+    order:{
+        height: 240,
+        overflow: 'auto'
     }
 })
 

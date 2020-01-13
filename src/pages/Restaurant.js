@@ -54,8 +54,8 @@ function Restaurant () {
       order,
       total,
       status: 'Preparação',
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      timestamp2: new Date().getTime()
+      timestamp: new Date().getTime(),
+      timestampDelivered: ''
     }
     firebase.firestore().collection('Orders').add(orders)
       .then(()=> {
