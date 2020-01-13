@@ -1,54 +1,26 @@
 import React from 'react';
-import Restaurant from "./pages/Restaurant";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import Kitchen from './pages/Kitchen';
-
-import { StyleSheet, css } from 'aphrodite'
+import Logo from './componentes/logo';
+//import { StyleSheet, css } from 'aphrodite'
+import Naveg from './componentes/Naveg';
 
 function App() {
 
-  return (
+  return ( 
     <>
-    <h1 className= {css(styles.h1)}>Burguer Queen</h1>
-  <Router>
-  <nav>
-    <ul className= {css(styles.ul)}>
-      <li>
-        <Link to="/salao">Salão</Link>
-      </li>
-      <li>
-        <Link to="/cozinha">Cozinha</Link> 
-      </li>
-    </ul>
-  </nav>
-    <Switch>
-      <Route exact path="/salao" component={Restaurant}/>
-    </Switch>
-    <Switch>
-      <Route exact path="/cozinha" component={Kitchen}/>
-    </Switch>
-  </Router>
+    <div>
+      <section>
+        <Logo/>
+      </section>
+      <Naveg/>
+    </div>
   </>
   )
 }
 
-const styles = StyleSheet.create({
-  h1: {
-    textAlign: 'center',
-    fontSize: 40,
-    fontFamily: 'Girassol',
-    color: '#EE5C42'
-  },
-  ul: {
-    top: 15,
-    position: 'absolute',
-  }
-})
-
-
+// const styles = StyleSheet.create({
+//   app: {
+//       // position: 'absolute',
+//       color: '#F89651',
+//   }
+// })
 export default App

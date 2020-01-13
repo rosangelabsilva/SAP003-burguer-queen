@@ -55,6 +55,7 @@ function Restaurant () {
       total,
       status: 'Preparação',
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      timestamp2: new Date().getTime()
     }
     firebase.firestore().collection('Orders').add(orders)
       .then(()=> {
@@ -74,7 +75,7 @@ function Restaurant () {
 
   
   const addOptionsExtras = () => {
-    const updatedItem = {...modal.item, Name: `${modal.item.Name}+${extras} Carne:${options}`}
+    const updatedItem = {...modal.item, Name: `${modal.item.Name}+${extras} Carne:${options}`, Price: modal.item.Price+1}
     addOrder(updatedItem);
     setModal({status: false})
   }
@@ -83,6 +84,7 @@ function Restaurant () {
 
   return(
     <>
+    <div className= {css(styles.page)}>
       <h1>Salão</h1>
       <form>
         <label className= {css(styles.label)}>Nome do cliente:</label>
@@ -143,7 +145,8 @@ function Restaurant () {
       <span>Total: R$ {total}</span>
       <br/>
       <Button className= {css(styles.send)} handleClick = {sendKitchen} title = "Enviar" ></Button>
-      </section>       
+      </section> 
+      </div>      
     </>
   )
 }
@@ -168,7 +171,7 @@ const styles = StyleSheet.create({
   },
   orders: {
     position: 'absolute',
-    top: 138,
+    top: 62,
     left: 530,
   },
   send: {
@@ -183,13 +186,12 @@ const styles = StyleSheet.create({
   },
   options: {
     position: 'absolute',
-    top: 350,
+    top: 300,
     left: 550,
-    // display: 'flex',
-    // flexWrap: 'wrap',
-    // justifyContent: 'space-evenly',
-    // height: '50%',
-    // width: '50%',
+  },
+  page: {
+    position:'absolute',
+    top: '20%'
   }
 })
 
