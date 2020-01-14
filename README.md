@@ -1,4 +1,4 @@
-#Burguer Queen
+# Burguer Queen
 
 [App](https://burguer-queen-proj.firebaseapp.com/)
 
