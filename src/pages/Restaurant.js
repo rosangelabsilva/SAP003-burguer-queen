@@ -91,25 +91,23 @@ function Restaurant () {
     <div className= {css(styles.page)}>
       <h1>Salão</h1>
       <form>
-        <label className= {css(styles.label)}>Nome do cliente:</label>
-        <label className= {css(styles.label)}>Número da mesa:</label><br/>
         <Input 
           type= 'text' 
           value= {name} 
           className = {css(styles.input)}
-          placeholder= 'Escreva o nome do cliente'
+          placeholder= 'Nome do cliente'
           onChange={(e) => setName(e.target.value)}/>
         <Input 
           type= 'number'
           value= {table} className = {css(styles.input)} 
-          placeholder= 'Digite o número da mesa'
+          placeholder= 'Número da mesa'
           onChange={(e) => setTable(e.target.value)}/>
       </form>
       <h2>Café da manhã</h2>
       <div className= {css(styles.div)}>
         {data.map((item) => {  
           if (item.Coffee){
-            return <Menu item={item} addOrder={addOrder}/>
+            return <Menu key= {item.id} item={item} addOrder={addOrder}/>
           } else {return ``}
         })}
       </div>
@@ -117,15 +115,16 @@ function Restaurant () {
       <div className= {css(styles.div)}>
         {data.map((item) => {
           if (!item.Coffee){
-            return <Menu item={item} addOrder={verifyOptions}/>
+            return <Menu key= {item.id} item={item} addOrder={verifyOptions}/>
           } else {return ``}
         })}
       </div>
         {modal.status ? (
-          <div className = {css(styles.options)}>
+          <div key= {modal.id} className = {css(styles.options)}>
+            <div>
             <h3>Extras</h3>
-            {modal.item.Extra.map(elem => (
-              <div>
+            {modal.item.Extra.map((elem, index) => (
+              <div key= {index}>
                 <Input 
                   type="radio" 
                   name="extras"
@@ -138,9 +137,11 @@ function Restaurant () {
                 <label>{elem}</label>
               </div>
             ))}
+            </div>
+            <div>
             <h3>Opções</h3>
-            {modal.item.Options.map(elem => (
-              <div>
+            {modal.item.Options.map((elem, index) => (
+              <div key={index}>
                 <Input 
                   onChange={() => setOptions(elem)} 
                   type="radio" 
@@ -150,6 +151,7 @@ function Restaurant () {
                 <label>{elem}</label>
               </div>
             ))}
+            </div>
             <Button 
               className= {css(styles.send)} 
               handleClick = {addOptionsExtras} 
@@ -158,9 +160,9 @@ function Restaurant () {
           </div>
         ) : false}
       <section className= {css(styles.orders)}>
-        <h3>Pedidos</h3>
-        {order.map(item =>
-          <span> {item.Name}&emsp;
+        <h2>Pedidos</h2>
+        {order.map((item, index) =>
+          <span key={index} className= {css(styles.spanOrders)}> {item.Name}&emsp;
             {item.Price.toLocaleString("pt-BR", {style: "currency", currency: "BRL"})} 
             &emsp;Quant:&nbsp;{item.count}
             <Button
@@ -171,7 +173,7 @@ function Restaurant () {
             <br/>
           </span>
         )}<br/>
-        <span>Total: R$ {total}</span><br/>
+        <span className={css(styles.total)}>Total: R$ {total}</span><br/>
         <Button 
           className= {css(styles.send)}
           handleClick = {sendKitchen} 
@@ -185,11 +187,11 @@ function Restaurant () {
 
 const styles = StyleSheet.create({
   input: {
-    margin: 15,
-    borderRadius: 7,
+    margin: 5,
+    borderRadius: 10,
     width: 200,
     height: 40,
-    fontSize: 15
+    fontSize: 20
   },
   div: {
     display: 'flex',
@@ -198,11 +200,10 @@ const styles = StyleSheet.create({
     height: '50%',
     width: '50%',
   },
-  label: {
-    margin: 55,
-  },
   orders: {
     position: 'absolute',
+    height: 200,
+    // overflow: 'auto',
     top: 62,
     left: 530,
   },
@@ -211,23 +212,37 @@ const styles = StyleSheet.create({
     width: 100,
     borderBottom: 'double',
     background: '#E9967A',
-    marginLeft: 110,
+    marginLeft: 10,
     borderRadius: 16,
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 20,
+    marginTop: 40
   },
   options: {
-    position: 'absolute',
-    top: 300,
+    top: 420,
     left: 550,
+    position: 'absolute',
+    fontSize: 20,
+    display: 'flex',
+    flexDirection: 'row'
   },
   page: {
     position:'absolute',
     top: '20%'
   },
+  spanOrders:{
+    display: 'flex',
+    margin: 8,
+    justifyContent: 'space-between',
+    fontSize: 20
+  },
   delet:{
-    margin: 5,
-    
+    left: 435,
+    position: 'absolute',
+    fontSize: 20
+  },
+  total:{
+    fontSize: 25
   }
 })
 

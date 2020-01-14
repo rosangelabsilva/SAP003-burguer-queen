@@ -38,5 +38,8 @@ A ferramenta [Trello](https://trello.com/b/byHRlTZq/burguer-queen) foi usada par
 
 ## 4. Considerações finais:
 
-Foram atendidos os critérios para a aceitação do projeto.
+**Layout**
 
+![Layout](/public/layout.jpeg)
+
+* Foram atendidos os critérios para a aceitação do projeto.

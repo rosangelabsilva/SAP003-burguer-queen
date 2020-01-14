@@ -49,46 +49,52 @@ function Kitchen () {
         <h1>Cozinha</h1>
         <h2>Em preparação</h2>
         <section className= {css(styles.orders)}>
-            {data.filter(statusPrepare).map(item =>
+            {data.filter(statusPrepare).map((item, index) =>
+                <div key={index}>
                 <Card
                     table={item.table}
                     name={item.name}
-                    order={item.order.map(elem => <tr>{elem.Name}&emsp;Quant.:{elem.count}</tr>)} 
+                    order={item.order.map((elem, index) =><div key={index}><tr>{elem.Name}&emsp;Quant.:{elem.count}</tr></div>)} 
                     title={'Pronto'}
                     status={item.status}
                     handleClick = {() => sendDelivery(item)}>
                 </Card>
+                </div>
             )}
         </section>
         <h2>Para entrega</h2>
         <section className= {css(styles.orders)}>
-            {data.filter(statusDelivery).map(item =>
+            {data.filter(statusDelivery).map((item, index) =>
+                <div key={index}>
                 <Card
                     table={item.table}
                     name={item.name}
                     status={item.status}
-                    order={item.order.map(elem => <tr>{elem.Name}&emsp;Quant.:{elem.count}</tr>)} 
+                    order={item.order.map((elem, index) =><div key={index}><tr>{elem.Name}&emsp;Quant.:{elem.count}</tr></div>)} 
                     title={'Entregue'}
                     handleClick = {() => sendFinalized(item)}>
                 </Card>
+                </div>
             )}
         </section>
         <h2>Finalizados</h2>
         <section className= {css(styles.orders)}>
-            {data.filter(statusFinal).map(item =>
+            {data.filter(statusFinal).map((item, index) =>
                 {const send = `${new Date (item.timestamp)
                     .getHours()}h ${new Date (item.timestamp).getMinutes()}m`;
                 const entrega = `${new Date (item.timestampDelivered)
                     .getHours()}h ${new Date (item.timestampDelivered).getMinutes()}m`
                 const diff = (hmh.diff(`${send}`,`${entrega}`).toString());
                     return(
+                        <div key={index}>
                         <Card
                             table={item.table}
                             name={item.name}
                             status={item.status}
-                            order={item.order.map(elem => <tr>{elem.Name}&emsp;Quant.:{elem.count}</tr>)}
+                            order={item.order.map((elem, index) =><div key={index}><tr>{elem.Name}&emsp;Quant.:{elem.count}</tr></div>)}
                             time={diff}>
                         </Card>
+                        </div>
                     )
                 }
             )}

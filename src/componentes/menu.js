@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
       background: '#FFDAB9',
       margin: 10,
       backgroundAttachment: 'fixed',
-      borderRadius: 16
+      borderRadius: 16,
+      fontSize: 17
     },
 })
 export default Menu

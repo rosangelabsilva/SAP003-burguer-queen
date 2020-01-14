@@ -5,8 +5,8 @@ import { StyleSheet, css } from 'aphrodite';
 function Card(props){
     return (
         <div className= {css(styles.card)}>
-            <span className= {css(styles.name)}>Cliente:{props.name}</span><br/>
-            <span className= {css(styles.table)}>Mesa:{props.table}</span><br/>
+            <span className= {css(styles.name)}>Cliente:{props.name}</span>&emsp;
+            <span className= {css(styles.table)}>Mesa:{props.table}</span>
             <div className= {css(styles.order)}>Pedido:<br/>{props.order}</div><br/>
             {props.status==='Pronto' ? <span>Tempo de Preparo:{props.time}</span>:<br/>}
             {props.status!=='Pronto' ? <Button handleClick={props.handleClick} title={props.title}
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         justifyContent: 'center',
         margin: 20,
-        height: 400,
-        width: 200,
+        height: 430,
+        width: 260,
         float: 'left',
         backgroundColor: '#FFDAB9',
         borderRadius: 15,
