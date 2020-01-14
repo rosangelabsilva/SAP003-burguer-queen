@@ -23,17 +23,17 @@ function Kitchen () {
     }
 
     const sendDelivery = (item) => {
-        firebase.firestore().collection('Orders').doc(item.id).update({
-            status: 'Entregar',
-            timestampDelivered: new Date().getTime()
-        })
+        firebase.firestore().collection('Orders').doc(item.id).update({status: 'Entregar'})
             .then(() => {
                 getOrders() 
             })
     }
 
     const sendFinalized = (item) => {
-        firebase.firestore().collection('Orders').doc(item.id).update({status: 'Pronto'})
+        firebase.firestore().collection('Orders').doc(item.id).update({
+            status: 'Pronto',
+            timestampDelivered: new Date().getTime()
+        })
             .then(() => {
                 getOrders()
             })
@@ -55,7 +55,7 @@ function Kitchen () {
                 <Card
                     table={item.table}
                     name={item.name}
-                    order={item.order.map(i => <tr>{i.Name}&emsp;Quant.:{i.count}</tr>)} 
+                    order={item.order.map(elem => <tr>{elem.Name}&emsp;Quant.:{elem.count}</tr>)} 
                     title={'Pronto'}
                     status={item.status}
                     handleClick = {() => sendDelivery(item)}>
@@ -69,7 +69,7 @@ function Kitchen () {
                     table={item.table}
                     name={item.name}
                     status={item.status}
-                    order={item.order.map(i => <tr>{i.Name}&emsp;Quant.:{i.count}</tr>)} 
+                    order={item.order.map(elem => <tr>{elem.Name}&emsp;Quant.:{elem.count}</tr>)} 
                     title={'Entregue'}
                     handleClick = {() => sendFinalized(item)}>
                 </Card>
@@ -78,18 +78,22 @@ function Kitchen () {
         <h2>Finalizados</h2>
         <section className= {css(styles.orders)}>
             {data.filter(statusFinal).map(item =>
-                {const send = `${new Date (item.timestamp).getHours()}h ${new Date (item.timestamp).getMinutes()}m`;
-                const entrega = `${new Date (item.timestampDelivered).getHours()}h ${new Date (item.timestampDelivered).getMinutes()}m`
+                {const send = `${new Date (item.timestamp)
+                    .getHours()}h ${new Date (item.timestamp).getMinutes()}m`;
+                const entrega = `${new Date (item.timestampDelivered)
+                    .getHours()}h ${new Date (item.timestampDelivered).getMinutes()}m`
                 const diff = (hmh.diff(`${send}`,`${entrega}`).toString());
-                return(
-                <Card
-                    table={item.table}
-                    name={item.name}
-                    status={item.status}
-                    order={item.order.map(i => <tr>{i.Name}&emsp;Quant.:{i.count}</tr>)}
-                    time={diff}>
-                </Card>
-            )})}
+                    return(
+                        <Card
+                            table={item.table}
+                            name={item.name}
+                            status={item.status}
+                            order={item.order.map(elem => <tr>{elem.Name}&emsp;Quant.:{elem.count}</tr>)}
+                            time={diff}>
+                        </Card>
+                    )
+                }
+            )}
         </section>
         </div>
         </>

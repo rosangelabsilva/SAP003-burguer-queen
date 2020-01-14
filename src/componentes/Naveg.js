@@ -3,7 +3,6 @@ import { StyleSheet, css } from 'aphrodite';
 import Restaurant from "../pages/Restaurant";
 import {
   BrowserRouter as Router,
-  
   Route,
   Link
 } from "react-router-dom";

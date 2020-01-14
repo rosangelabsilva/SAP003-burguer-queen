@@ -3,7 +3,6 @@ import Button from './button';
 import { StyleSheet, css } from 'aphrodite';
 
 function Card(props){
-
     return (
         <div className= {css(styles.card)}>
             <span className= {css(styles.name)}>Cliente:{props.name}</span><br/>
@@ -13,8 +12,7 @@ function Card(props){
             {props.status!=='Pronto' ? <Button handleClick={props.handleClick} title={props.title}
             className= {css(styles.btn)}></Button> : <br/>}
         </div>        
-    )
-   
+    ) 
 }
 
 const styles = StyleSheet.create({

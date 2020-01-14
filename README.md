@@ -1,68 +1,56 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#Burguer Queen
 
-## Available Scripts
+## Índice
 
-In the project directory, you can run:
+* [1. Prefácio](#1-prefácio)
+* [2. Protótipo](#2-protótipo)
+* [3. Perfil dos usuário](#3-perfil-dos-usuários)
+* [4. Histórias de usuários](#4-histórias-dos-usuários)
+* [5. Considerações finais](#5-considerações-finais)
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## 1. Prefácio:
 
-### `npm test`
+Projeto com o objetivo de elaboração de uma interface que possibilita realizar pedidos utilizando um tablet, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 2. Protótipo:
+Criamos um protótipo no Marvel [Click no Link](https://marvelapp.com/ch5eh0e/screen/61883523) para mostrar
+a funcionalidade das telas. 
+A primeira tela é composta de card's com as informações de Nome, Status e Genêro.
+A segunda tela mostramos como funciona a interação do usuário ao utilizar um dos filtros, nesse caso 
+escolhemos o "Filter Gender", junto a ação de filtrar também aparece a informação de uma cálculo de % relacionada a opção escolhida de filtro.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+![Protótipo](prototipo01.jpeg)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Protótipo](prototipo02.jpeg)
 
-### `npm run eject`
+## 3. Perfil dos usuários:
+Foram escolhidos duas personas para inicialização do projeto:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Personas](personas.jpeg)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 4. Histórias de usuários:
+![HistoriaUsuario](HistoriaUsuario.jpeg)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 5. Considerações finais
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Foram atendidos os critérios para a aceitação do projeto:
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* Usar VanillaJS.
+* Não utilizar `this`.
+* Passa pelo linter (`npm run pretest`)
+* Passa pelos testes (`npm test`)
+* Testes unitários cobrem um mínimo de 70% de statements, functions,
+  lines e branches.
+* Inclui uma definição de produto clara e informativa no `README.md`.
+* Inclui histórias de usuário no `README.md`.
+* Inclui rascunho da solução (protótipo de baixa fidelidade) no
+  `README.md`.
+* Inclui uma lista de problemas detectados nos testes de usabilidade no `README.md`.
+* UI: Mostra lista/tabela/etc com dados e/ou indicadores.
+* UI: Permite ordenar dados por um ou mais campos (asc e desc).
+* UI: Permite filtrar dados com base em uma condição.
+* UI: É responsivo.
