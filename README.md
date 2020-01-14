@@ -1,56 +1,42 @@
 #Burguer Queen
 
+[App](https://burguer-queen-proj.firebaseapp.com/)
+
 ## Índice
 
 * [1. Prefácio](#1-prefácio)
-* [2. Protótipo](#2-protótipo)
-* [3. Perfil dos usuário](#3-perfil-dos-usuários)
-* [4. Histórias de usuários](#4-histórias-dos-usuários)
-* [5. Considerações finais](#5-considerações-finais)
-
+* [2. O Projeto](#2-o-projeto)
+* [3. Métodos Utilizados](#3-metodos-utilizados)
+* [4. Considerações finais](#4-considerações-finais)
 
 
 ## 1. Prefácio:
 
-Projeto com o objetivo de elaboração de uma interface que possibilita realizar pedidos utilizando um tablet, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente.
+Burguer Queen é um fast food 24 horas que necessita de um sistema para ajudar a receber os pedidos dos clientes.
+
+O projeto tem como objetivo a elaboração dessa interface que possibilita realizar pedidos utilizando um tablet, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente.
 
 
+## 2. O Projeto:
 
-## 2. Protótipo:
-Criamos um protótipo no Marvel [Click no Link](https://marvelapp.com/ch5eh0e/screen/61883523) para mostrar
-a funcionalidade das telas. 
-A primeira tela é composta de card's com as informações de Nome, Status e Genêro.
-A segunda tela mostramos como funciona a interação do usuário ao utilizar um dos filtros, nesse caso 
-escolhemos o "Filter Gender", junto a ação de filtrar também aparece a informação de uma cálculo de % relacionada a opção escolhida de filtro.
+O garçom deverá anotar os pedidos dos clientes, colocando o nome do cliente e o número da mesa. Poderá adicionar e excluir produtos, ver o resumo do pedido, com valores e quantidade e enviar para a cozinha.
 
-![Protótipo](prototipo01.jpeg)
+Na cozinha, o chefe de cozinha deverá ver os pedidos, marcar os pedidos que foram preparados e estão prontos para serem servidos. E ver todos os pedidos como o tempo de preparo, depois de finalizados.
 
-![Protótipo](prototipo02.jpeg)
+O garçom ainda poderá ver a lista de pedidos prontos para servir e marca-los quando forem entregues.
 
-## 3. Perfil dos usuários:
-Foram escolhidos duas personas para inicialização do projeto:
 
-![Personas](personas.jpeg)
+## 3. Métodos Utilizados:
 
-## 4. Histórias de usuários:
-![HistoriaUsuario](HistoriaUsuario.jpeg)
+Implementado totalmente em JavaScript (ES6 +). Estruturado de acordo com as conveções do [React Hooks](https://reactjs.org/docs/hooks-intro.html);
 
-## 5. Considerações finais
+Utilizado a ferramenta [Aphrodite](https://github.com/Khan/aphrodite) para colocar estilos;
 
-Foram atendidos os critérios para a aceitação do projeto:
+Foi definido como banco de dados o [Firebase](https://burguer-queen-proj.firebaseapp.com/), o que possibilitou criar, deletar e atualizar as informações;
 
-* Usar VanillaJS.
-* Não utilizar `this`.
-* Passa pelo linter (`npm run pretest`)
-* Passa pelos testes (`npm test`)
-* Testes unitários cobrem um mínimo de 70% de statements, functions,
-  lines e branches.
-* Inclui uma definição de produto clara e informativa no `README.md`.
-* Inclui histórias de usuário no `README.md`.
-* Inclui rascunho da solução (protótipo de baixa fidelidade) no
-  `README.md`.
-* Inclui uma lista de problemas detectados nos testes de usabilidade no `README.md`.
-* UI: Mostra lista/tabela/etc com dados e/ou indicadores.
-* UI: Permite ordenar dados por um ou mais campos (asc e desc).
-* UI: Permite filtrar dados com base em uma condição.
-* UI: É responsivo.
+A ferramenta [Trello](https://trello.com/b/byHRlTZq/burguer-queen) foi usada para a organização das tarefas.
+
+## 4. Considerações finais:
+
+Foram atendidos os critérios para a aceitação do projeto.
+

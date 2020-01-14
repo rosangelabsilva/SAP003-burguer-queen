@@ -39,10 +39,8 @@ function Kitchen () {
             })
     }
 
-    const statusPrepare = (status) => status.status==='Preparação';
-    
+    const statusPrepare = (status) => status.status==='Preparação'; 
     const statusDelivery = (status) => status.status==='Entregar';
-
     const statusFinal = (status) => status.status==='Pronto';
 
     return(

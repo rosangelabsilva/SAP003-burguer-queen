@@ -20,9 +20,7 @@ const styles = StyleSheet.create({
       borderBottom: 'solid',
       background: '#FFDAB9',
       margin: 10,
-    //   outline:'none',
       backgroundAttachment: 'fixed',
-    //   whiteSpace: 'nowrap',
       borderRadius: 16
     },
 })
