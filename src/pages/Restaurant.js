@@ -89,7 +89,7 @@ function Restaurant () {
   return(
     <>
     <div className= {css(styles.page)}>
-      <h1>Salão</h1>
+      <h1 className= {css(styles.saloon)}>Salão</h1>
       <form>
         <Input 
           type= 'text' 
@@ -103,7 +103,7 @@ function Restaurant () {
           placeholder= 'Número da mesa'
           onChange={(e) => setTable(e.target.value)}/>
       </form>
-      <h2>Café da manhã</h2>
+      <h2 className= {css(styles.title)}>Café da manhã</h2>
       <div className= {css(styles.div)}>
         {data.map((item) => {  
           if (item.Coffee){
@@ -111,7 +111,7 @@ function Restaurant () {
           } else {return ``}
         })}
       </div>
-      <h2>Resto do dia</h2>
+      <h2 className= {css(styles.title)}>Resto do dia</h2>
       <div className= {css(styles.div)}>
         {data.map((item) => {
           if (!item.Coffee){
@@ -191,7 +191,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 200,
     height: 40,
-    fontSize: 20
+    fontSize: 20,
+    marginLeft: 40
   },
   div: {
     display: 'flex',
@@ -243,6 +244,12 @@ const styles = StyleSheet.create({
   },
   total:{
     fontSize: 25
+  },
+  title:{
+    marginLeft: 180
+  },
+  saloon:{
+    marginLeft: 40
   }
 })
 

@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Kitchen from './pages/Kitchen';
 import { StyleSheet, css } from 'aphrodite';
+import { black } from 'color-name';
 
 function App() {
 
@@ -20,10 +21,10 @@ function App() {
           <nav>
             <ul className= {css(styles.ul)}>
               <li>
-                <Link to="/">Salão</Link>
+                <Link className= {css(styles.link)} to="/">Salão</Link>
               </li>
               <li>
-                <Link to="/kitchen">Cozinha</Link> 
+                <Link className= {css(styles.link)} to="/kitchen">Cozinha</Link> 
               </li>
             </ul>
           </nav>
@@ -48,8 +49,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     height: '10%',
     width: '50%',
-    top: 1,
+    top: 1
   },
+  link: {
+    textDecoration: 'none',
+    border: 'solid',
+    borderRadius: 10,
+    fontSize: 40,
+    borderColor: 'black',
+    color: 'black',
+    padding: 15 
+  }
 })
 
 export default App
