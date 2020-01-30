@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import Kitchen from './pages/Kitchen';
 import { StyleSheet, css } from 'aphrodite';
-import { black } from 'color-name';
 
 function App() {
 

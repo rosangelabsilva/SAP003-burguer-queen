@@ -46,8 +46,8 @@ function Kitchen () {
     return(
         <>
         <div className= {css(styles.page)}>        
-        <h1>Cozinha</h1>
-        <h2>Em preparação</h2>
+        <h1 className= {css(styles.title)}>Cozinha</h1>
+        <h2 className= {css(styles.title)}>Em preparação</h2>
         <section className= {css(styles.orders)}>
             {data.filter(statusPrepare).map((item, index) =>
                 <div key={index}>
@@ -62,7 +62,7 @@ function Kitchen () {
                 </div>
             )}
         </section>
-        <h2>Para entrega</h2>
+        <h2 className= {css(styles.title)}>Para entrega</h2>
         <section className= {css(styles.orders)}>
             {data.filter(statusDelivery).map((item, index) =>
                 <div key={index}>
@@ -77,7 +77,7 @@ function Kitchen () {
                 </div>
             )}
         </section>
-        <h2>Finalizados</h2>
+        <h2 className= {css(styles.title)}>Finalizados</h2>
         <section className= {css(styles.orders)}>
             {data.filter(statusFinal).map((item, index) =>
                 {const send = `${new Date (item.timestamp)
@@ -113,6 +113,9 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexWrap: 'wrap',
     },
+    title: {
+        marginLeft: 40
+    }
 })
 
 export default Kitchen
