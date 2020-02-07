@@ -15,11 +15,11 @@ function Menu (props){
 
 const styles = StyleSheet.create({
     btn: {
-      height: 80,
-      width: 108,
+      height: 98,
+      width: 110,
       borderBottom: 'solid',
       background: '#FFDAB9',
-      margin: 10,
+      margin: 8,
       backgroundAttachment: 'fixed',
       borderRadius: 16,
       fontSize: 17

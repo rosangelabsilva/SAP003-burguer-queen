@@ -48,6 +48,7 @@ function Restaurant () {
   const total = order.reduce((accumulator, item) => accumulator + item.Price * item.count, 0)
     
   function sendKitchen(){
+    if(name !== '' || table !== ''){
     const orders = {
       name,
       table,
@@ -63,6 +64,7 @@ function Restaurant () {
         setName('');
         setTable('')
       })
+    } else { alert('Preencher campo Nome do cliente e Mesa')}
   }
 
   const verifyOptions = (item) => {
